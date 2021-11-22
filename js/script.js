@@ -1,15 +1,17 @@
 var app = new Vue({
     el: "#container",
     data: {
-        email: "",
+        emails: [],
     },
     mounted(){
         const self = this;
 
-        axios.
-        get("https://flynn.boolean.careers/exercises/api/random/mail").
-        then(function(response){
-            self.email = response.data.response
-        })
+        for (let i = 0; i < 10; i++){
+            axios.
+            get("https://flynn.boolean.careers/exercises/api/random/mail").
+            then(function(response){
+                self.emails.push(response.data.response)
+            })
+        }       
     }
 })
